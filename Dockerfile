@@ -34,10 +34,6 @@ ADD irodsrpms /RPMs
 WORKDIR /RPMs
 # get iRODS rpm files
 RUN sh get-irods-rpms.sh
-# Install irods-icat
-RUN rpm -i $(ls -l | tr -s ' ' | grep irods-icat | cut -d ' ' -f 9)
-# Install irods-database-plugin
-RUN rpm -i $(ls -l | tr -s ' ' | grep irods-database | cut -d ' ' -f 9)
 
 ADD scripts /scripts
 WORKDIR /scripts
@@ -45,8 +41,8 @@ RUN chmod a+x *.sh
 
 # Open firewall for iRODS
 EXPOSE 1247
-#ENTRYPOINT [ "/scripts/bootstrap.sh" ]
+ENTRYPOINT [ "/scripts/bootstrap.sh" ]
 
 # Keep container from shutting down until explicitly stopped
-ENTRYPOINT ["/usr/bin/tail"]
-CMD ["-f", "/dev/null"]
+#ENTRYPOINT ["/usr/bin/tail"]
+#CMD ["-f", "/dev/null"]
