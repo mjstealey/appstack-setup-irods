@@ -20,4 +20,4 @@ sed -i 's/^irodsHost.*/irodsHost localhost/' /var/lib/irods/.irods/.irodsEnv
 
 #cat /etc/passwd | grep irods > /root/.secret/IRODS_USER_PASSWD.txt
 
-/usr/bin/tail -f /dev/null
+#/usr/bin/tail -f /dev/null
